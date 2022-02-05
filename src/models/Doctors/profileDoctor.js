@@ -1,17 +1,14 @@
 const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
+require("./doctorsModel");
+mongoose.model("doctors");
+
 const {Schema} = mongoose;
 
 const profileDoctor = new Schema({
     doctor:{
         type:Schema.Types.ObjectId,
         ref: 'doctors'
-    },
-    img:{
-        name: String,
-        desc: String,
-        type: Buffer,
-        contentType: String
     },
     age: String,
     specialty: {
@@ -24,7 +21,12 @@ const profileDoctor = new Schema({
     },
     contacts:{
         type: [String],
-
+    },
+    img:{
+        name: String,
+        desc: String,
+        type: Buffer,
+        contentType: String
     }
 });
 

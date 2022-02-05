@@ -7,9 +7,9 @@ const Doctor = mongoose.model("doctors");
 module.exports = {
 
     async store(req, res){
-        let { username, password, name, age, specialty, description, contact } = req.body;
+        let { username, password } = req.body;
         try {
-            await Doctor.create({ username, password, name, age, specialty, description, contact });
+            await Doctor.create({ username, password});
             res.status(200).json({"result":"Sucess: Doctor created"})
      } catch (error) {
          res.status(400).json(error.message);

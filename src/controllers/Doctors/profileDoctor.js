@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 require("../../models/Doctors/doctorsModel");
+require("../../models/Doctors/profileDoctor");
 const multer = require('multer');
 const upload = multer({dest:"../uploads/"});
 
@@ -9,8 +10,8 @@ module.exports = {
     async profile(req, res){
         try{
             let {id} = req.params;
-            let result = await Doctor.find(id);
-            res.status(200).json(result);
+            let doctor = await Doctor.findOne(id);
+            res.status(200).json({});
         }catch(error){
             res.status(404).json(error.message);
         }
