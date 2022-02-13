@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
+require("./profileDoctor");
+
+const profileDoctor = mongoose.model("profileDoctor");
 
 const doctorsModel =  new mongoose.Schema({
     username:{
@@ -16,6 +19,7 @@ const doctorsModel =  new mongoose.Schema({
         type:String, 
         required: true
     },
+    children:[profileDoctor],
     active: {
         type: Boolean,
         default: true,
@@ -25,8 +29,7 @@ const doctorsModel =  new mongoose.Schema({
         type: Date,
         default:Date.now,
         select:false
-    }
-
+    },
 });
 
 doctorsModel.plugin(mongoosePaginate);

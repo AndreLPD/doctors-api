@@ -1,16 +1,14 @@
 const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
-require("./doctorsModel");
-mongoose.model("doctors");
+
 
 const {Schema} = mongoose;
 
 const profileDoctor = new Schema({
-    doctor:{
-        type:Schema.Types.ObjectId,
-        ref: 'doctors'
+    age: {
+        type:String,
+        required:true
     },
-    age: String,
     specialty: {
         type:String, 
         required: true
