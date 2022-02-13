@@ -20,6 +20,7 @@ const doctorsModel =  new mongoose.Schema({
         required: true
     },
     children:[profileDoctor],
+    child: profileDoctor,
     active: {
         type: Boolean,
         default: true,
