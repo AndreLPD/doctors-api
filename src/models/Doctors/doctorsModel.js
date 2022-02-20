@@ -19,8 +19,10 @@ const doctorsModel =  new mongoose.Schema({
         type:String, 
         required: true
     },
-    children:[profileDoctor],
-    child: profileDoctor,
+    profileDoctor:{
+        type:Schema.Types.ObjectId,
+        ref: "profileDoctor"
+    },
     active: {
         type: Boolean,
         default: true,
