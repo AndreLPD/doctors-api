@@ -1,18 +1,17 @@
 const mongoose = require("mongoose");
 require("../../models/Doctors/doctorsModel");
-const multer = require('multer');
-const upload = multer({dest:"../uploads/"})
 
 const Doctor = mongoose.model("doctors");
 module.exports = {
 
     async store(req, res){
-        let { username, password } = req.body;
+        let { username, password, name } = req.body;
         try {
             await Doctor.create({ username, password, name});
             res.status(200).json({"result":"Sucess: Doctor created"})
      } catch (error) {
          res.status(400).json(error.message);
+         console.log(error)
      }
     },
 

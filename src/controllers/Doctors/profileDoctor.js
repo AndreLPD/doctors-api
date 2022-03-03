@@ -10,15 +10,17 @@ module.exports = {
     async profile(req, res){
         try{
             let {id} = req.params;
-            let doctor = await Doctor.findOne(id);
-            res.status(200).json({});
+            let{age, specialty, description, contacts} = req.body;
+            let doctor = await Doctor.findByIdAndUpdate({id}, {age, specialty, description, contacts});
+
+            res.status(200).json({doctor});
         }catch(error){
             res.status(404).json(error.message);
         }
     },
 
-    async uploadAvatar(){
-            upload.single('avatar'),function(req, res, next){
+    /*async upload.single('avatar'),function(req, res, next){
+         uploadAvatar(){
                 try{
                     let {img} = req.body;
                     let {id} = req.params;
@@ -29,5 +31,5 @@ module.exports = {
                 }
 
             }
-    }
+        }*/
 }

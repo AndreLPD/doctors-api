@@ -2,9 +2,11 @@ const mongoose = require("mongoose");
 const mongoosePaginate = require("mongoose-paginate-v2");
 require("./profileDoctor");
 
+const {Schema} = mongoose;
+
 const profileDoctor = mongoose.model("profileDoctor");
 
-const doctorsModel =  new mongoose.Schema({
+const doctorsModel =  new Schema({
     username:{
         type: String,
         required: true,
